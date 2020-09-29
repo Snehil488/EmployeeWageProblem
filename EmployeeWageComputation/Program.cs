@@ -6,15 +6,12 @@ namespace EmployeeWageComputation
     {
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
-        public const int EMP_RATE_PER_HOUR = 20;
-        public const int NUMBER_OF_WORKING_DAYS = 20;
-        public const int MAX_HRS_IN_MONTH = 100;
-        public static int compEmployeeWage()
+        public static void compEmployeeWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHrsPerMonth)
         {
             int empHrs = 0;
             int totalEmpHrs = 0;
             int totalWorkingDays = 0;
-            while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUMBER_OF_WORKING_DAYS)
+            while (totalEmpHrs <= maxHrsPerMonth && totalWorkingDays < numOfWorkingDays)
             {
                 totalWorkingDays++;
                 Random random = new Random();
@@ -33,12 +30,13 @@ namespace EmployeeWageComputation
                 }
                 totalEmpHrs += empHrs;
             }
-            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-            return totalEmpWage;
+            int totalEmpWage = totalEmpHrs * empRatePerHour;
+            Console.WriteLine("Total Emp Wage for Company " + company + " is " + totalEmpWage);            
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Total Employee Wage is : " + compEmployeeWage());
+            compEmployeeWage("Reliance Jio", 10, 22, 120);
+            compEmployeeWage("TATA", 25, 18, 80);
         }
     }
 }
